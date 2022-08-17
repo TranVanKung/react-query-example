@@ -1,0 +1,85 @@
+{
+  "name": "edu-admin",
+  "version": "0.1.0",
+  "private": true,
+  "main": "src/electron/index.js",
+  "homepage": "./",
+  "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@craco/craco": "^6.3.0",
+    "antd": "4.17.0-alpha.5",
+    "axios": "^0.22.0",
+    "concurrently": "^6.2.2",
+    "cross-env": "^7.0.3",
+    "draft-js": "^0.11.7",
+    "draftjs-to-html": "^0.9.1",
+    "electron-is-dev": "^2.0.0",
+    "history": "^5.0.1",
+    "html-to-draftjs": "^1.5.0",
+    "immutability-helper": "^3.1.1",
+    "lodash": "^4.17.21",
+    "qs": "^6.10.1",
+    "react": "^17.0.2",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-dom": "^17.0.2",
+    "react-draft-wysiwyg": "^1.14.7",
+    "react-highlight-words": "^0.17.0",
+    "react-pdf": "^5.4.0",
+    "react-query": "^3.25.1",
+    "react-redux": "^7.2.5",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "^4.0.3",
+    "redux": "^4.1.1",
+    "redux-persist": "^6.0.0",
+    "styled-components": "^5.3.1",
+    "wait-on": "^6.0.0",
+    "web-vitals": "^1.0.1"
+  },
+  "scripts": {
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
+    "dev": "concurrently -k \"cross-env BROWSER=none npm run start\" \"wait-on http://localhost:3000 && npm run electron:start\"",
+    "electron:build": "npm run build && electron-builder -c.extraMetadata.main=build/main.js",
+    "electron:start": "cross-env NODE_ENV=development nodemon --watch 'src/electron/**/*' --exec \"\"electron .\"\""
+  },
+  "build": {
+    "extends": null,
+    "appId": "edu.admin",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "electron": "^15.0.0",
+    "electron-builder": "^22.11.7",
+    "electron-devtools-installer": "^3.2.0",
+    "nodemon": "^2.0.13",
+    "redux-devtools-extension": "^2.13.9"
+  }
+}
